@@ -71,20 +71,16 @@
 			
 				<li><a href="/" target="_blank">主页</a></li>
 			
-				<li><a href="https://zhousiwei.gitee.io/ibooks/" target="_blank">技术笔记</a></li>
+				<li><a href="/files/resume.pdf" target="_blank">简历</a></li>
 			
-				<li><a href="/tags/%E9%9A%8F%E7%AC%94/" target="_blank">随笔</a></li>
+				<li><a href="/files/portfolio.pdf" target="_blank">作品集</a></li>
 			
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
 			
 				
-					<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
-				
 			
-				
-					<a q-on="click: openSlider(e, 'friends')" href="javascript:void(0)">友链</a>
 				
 			
 				
@@ -111,7 +107,7 @@
 					
 				
 					
-						<a class="mail" href="mailto:2476420372@qq.com" 
+						<a class="mail" href="mailto:yihang.shi@email.cn" 
 												title="Email" target="_blank"><i class="icon-mail"></i></a>
 					
 				
@@ -177,7 +173,7 @@
 					
 						
 						<a class="mail" target="_blank" 
-							href="mailto:2476420372@qq.com" title="Email"><i class="icon-mail"></i></a>
+							href="mailto:yihang.shi@email.cn" title="Email"><i class="icon-mail"></i></a>
 						
 					
 				</div>
@@ -189,9 +185,9 @@
 				
 					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a target="_blank" rel="noopener" href="https://zhousiwei.gitee.io/ibooks/">技术笔记</a></li>
+					<li style="width: 33.333333333333336%"><a href="/files/resume.pdf">简历</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+					<li style="width: 33.333333333333336%"><a href="/files/portfolio.pdf">作品集</a></li>
 		        
 				</ul>
 			</nav>
@@ -398,7 +394,7 @@
 		open_in_new: true,
 		toc_hide_index: true,
 		root: "/",
-		innerArchive: true,
+		innerArchive: false,
 		showTags: true
 	}
 </script>
@@ -409,23 +405,6 @@
 
 <!--  -->
 
-<script>
-  /* 标签页标题切换 */
-  var originTitle = document.title;
-  var titleTime;
-  document.addEventListener("visibilitychange", function () {
-    if (document.hidden) {
-      document.title = "(つェ⊂) 我藏好了哦~ " + originTitle;
-      clearTimeout(titleTime);
-    } else {
-      document.title = "(*´∇｀*) 被你发现啦~ " + originTitle;
-      titleTime = setTimeout(function () {
-        document.title = originTitle;
-      }, 2000);
-    }
-  });
-</script>
-
 
     
 <div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
@@ -433,11 +412,7 @@
     
     
       
-      
-      
     
-      
-      
       
     
       
@@ -450,132 +425,25 @@
     
     
       
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+        
       
         
       
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'friends')"><a href="javascript:void(0)" q-class="active:friends">友链</a></li>
-      
-        
-      
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
+      <li style="width: 100%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
       
         
     </ul>
   </div>
   <div class="tools-wrap">
     
-    	<section class="tools-section tools-section-all" q-show="innerArchive">
-        <div class="search-wrap">
-          <input class="search-ipt" q-model="search" type="text" placeholder="find something…">
-          <i class="icon-search icon" q-show="search|isEmptyStr"></i>
-          <i class="icon-close icon" q-show="search|isNotEmptyStr" q-on="click:clearChose(e)"></i>
-        </div>
-        <div class="widget tagcloud search-tag">
-          <p class="search-tag-wording">tag:</p>
-          <label class="search-switch">
-            <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
-          </label>
-          <ul class="article-tag-list" q-show="showTags">
-            
-            <div class="clearfix"></div>
-          </ul>
-        </div>
-        <ul class="search-ul">
-          <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
-            缺失模块。<br/>1、请确保node版本大于6.2<br/>2、在博客根目录（注意不是yilia-plus根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
-            3、在根目录_config.yml里添加配置：
-<pre style="font-size: 12px;" q-show="jsonFail">
-  jsonContent:
-    meta: false
-    pages: false
-    posts:
-      title: true
-      date: true
-      path: true
-      text: false
-      raw: false
-      content: false
-      slug: false
-      updated: false
-      comments: false
-      link: false
-      permalink: false
-      excerpt: false
-      categories: false
-      tags: true
-</pre>
-          </p>
-          <li class="search-li" q-repeat="items" q-show="isShow">
-            <a q-attr="href:path|urlformat" class="search-title"><i class="icon-quo-left icon"></i><span q-text="title"></span></a>
-            <p class="search-time">
-              <i class="icon-calendar icon"></i>
-              <span q-text="date|dateformat"></span>
-            </p>
-            <p class="search-tag">
-              <i class="icon-price-tags icon"></i>
-              <span q-repeat="tags" q-on="click:choseTag(e, name)" q-text="name|tagformat"></span>
-            </p>
-          </li>
-        </ul>
-    	</section>
-    
 
-    
-    	<section class="tools-section tools-section-friends" q-show="friends">
-  		
-        <ul class="search-ul">
-          
-            <li class="search-li">
-              <a href="https://github.com/JoeyBling" target="_blank" 
-                class="search-title" >
-                
-                  <i class="icon-link icon"></i>
-                
-                GitHub
-              </a>
-            </li>
-          
-            <li class="search-li">
-              <a href="https://gitee.com/zhousiwei" target="_blank" 
-                class="search-title" >
-                
-                  <i class="icon-link icon"></i>
-                
-                码云
-              </a>
-            </li>
-          
-            <li class="search-li">
-              <a href="https://www.jianshu.com/u/02cbf31a043a" target="_blank" 
-                class="search-title" >
-                
-                  <i class="icon-link icon"></i>
-                
-                简书
-              </a>
-            </li>
-          
-            <li class="search-li">
-              <a href="https://blog.csdn.net/qq_30930805" target="_blank" 
-                class="search-title" >
-                
-                  <i class="icon-link icon"></i>
-                
-                CSDN
-              </a>
-            </li>
-          
-        </ul>
-  		
-    	</section>
     
 
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
         
           
-  	  		<div class="aboutme-wrap" id="aboutme">自我介绍：<br>bnucs在读<br><br><br>学习笔记和记录思考<br><br>表达是为了抵抗消逝<br><br>生而有涯，学也无涯，愿以有涯随无涯</div>
+  	  		<div class="aboutme-wrap" id="aboutme">自我介绍：<br>bnu cs在读<br><br>生而有涯，学也无涯，愿以有涯随无涯</div>
   	  	
     	</section>
     
